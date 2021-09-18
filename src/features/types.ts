@@ -41,8 +41,10 @@ export interface LOGIN_USER {
     criteria: string;
     status: string;
     status_name: string;
-    category: number;
-    category_item: string;
+    project: number;
+    project_name: string;
+    progress: string;
+    progress_name: string;
     estimate: number;
     responsible: number;
     responsible_username: string;
@@ -57,20 +59,26 @@ export interface LOGIN_USER {
     description: string;
     criteria: string;
     status: string;
-    category: number;
     estimate: number;
     responsible: number;
+    project:number,
+    progress: string,
+    
   }
-  export interface CATEGORY {
+  export interface PROJECT {
     id: number;
-    item: string;
+    name: string;
   }
   export interface TASK_STATE {
     tasks: READ_TASK[];
     editedTask: POST_TASK;
     selectedTask: READ_TASK;
     users: USER[];
-    category: CATEGORY[];
+    project: PROJECT[];
+    progress:PROJECT[];
+    formOpen:boolean,
+    proOpen:boolean,
+
   }
   /*TaskList.tsx*/
   export interface SORT_STATE {
