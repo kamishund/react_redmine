@@ -1,36 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom'
+
 import {
-  fetchAsyncDeleteTask,
-  selectTasks,
   editTask,
-  selectTask,
-  selectSelectedTask,
-  fetchAsyncGetTasks,
-  fetchAsyncGetUsers,
-  fetchAsyncGetProject,
   fetchAsyncCreateTask,
   fetchAsyncUpdateTask,
   selectEditedTask,
   selectUsers,
   selectProject,
-  selectProgress,
   fetchAsyncCreateProject,
   selectFormOpen,
   selectProOpen,
-  tformOpen,
   tproOpen,
   fformOpen,
   fproOpen,
   
 } from "../features/task/taskSlice";
-import { selectLoginUser, selectProfiles, } from "../features/auth/authSlice";
 import { AppDispatch } from "../app/store";
-import { initialState } from "../features/task/taskSlice";
-import { SORT_STATE, READ_TASK } from "../features/types";
-import { ParametricSelector } from "reselect";
-import Layout from "../components/Layout"
 import Modal from 'react-modal'
 
 const customStyles = {
@@ -47,10 +33,6 @@ const customStyles = {
 
 const TaskList: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
-    const tasks = useSelector(selectTasks);
-    const profiles = useSelector(selectProfiles);
-    const select = useSelector(selectSelectedTask);
-    const progress = useSelector(selectProgress);
 
   //   formn
     const users = useSelector(selectUsers);

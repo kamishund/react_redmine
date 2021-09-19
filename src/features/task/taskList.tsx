@@ -1,7 +1,6 @@
 import React, { useState, useEffect ,memo} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  fetchAsyncDeleteTask,
   selectTasks,
   editTask,
   selectTask,
@@ -11,9 +10,6 @@ import { AppDispatch } from "../../app/store";
 import { 
   initialState , 
   tformOpen,
-  tproOpen,
-  fformOpen,
-  fproOpen
 } from "./taskSlice";
 import { SORT_STATE, READ_TASK } from "../types";
 import Form from "../../components/Form";

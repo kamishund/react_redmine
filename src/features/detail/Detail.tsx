@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom'
 import {
@@ -6,24 +6,14 @@ import {
   selectTasks,
   editTask,
   selectTask,
-  selectSelectedTask,
   fetchAsyncGetTasks,
-  fetchAsyncGetUsers,
   fetchAsyncGetProject,
-  selectEditedTask,
-  selectUsers,
-  selectProject,
   tformOpen,
-  tproOpen,
-  fformOpen,
-  fproOpen,
   
 } from "../task/taskSlice";
-import { selectLoginUser, selectProfiles, } from "../auth/authSlice";
+import { selectLoginUser} from "../auth/authSlice";
 import { AppDispatch } from "../../app/store";
-import { initialState } from "../task/taskSlice";
-import { SORT_STATE, READ_TASK , POST_TASK} from "../types";
-import { ParametricSelector } from "reselect";
+import {  READ_TASK } from "../types";
 import Layout from "../../components/Layout"
 import Form from "../../components/Form";
 
@@ -36,7 +26,6 @@ interface ParamTypes {
 const TaskList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const tasks = useSelector(selectTasks);
-  const profiles = useSelector(selectProfiles);
   const user = useSelector(selectLoginUser);
   const { id} = useParams<ParamTypes>();
   const filted =  tasks.filter((t) => t.id.toString() == id)
@@ -55,12 +44,12 @@ const TaskList: React.FC = () => {
 
 
 
-  const conditionalSrc = (user: number) => {
-    const loginProfile = profiles.filter(
-      (prof) => prof.user_profile === user
-    )[0];
-    return loginProfile?.img !== null ? loginProfile?.img : `${process.env.REACT_APP_API_URL}/media/default/default.png`;
-  };
+  // const conditionalSrc = (user: number) => {
+  //   const loginProfile = profiles.filter(
+  //     (prof) => prof.user_profile === user
+  //   )[0];
+  //   return loginProfile?.img !== null ? loginProfile?.img : `${process.env.REACT_APP_API_URL}/media/default/default.png`;
+  // };
 
   const setPut =async (row:READ_TASK)=>{
     await dispatch(selectTask(row));
